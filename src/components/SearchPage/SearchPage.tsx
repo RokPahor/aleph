@@ -59,7 +59,7 @@ const SearchPage: React.FC = () => {
   }
 
   const handleBookClick = (bookIsbns?: string[]) => {
-    if (bookIsbns?.length) navigate(`/${bookIsbns[1]}`)
+    if (bookIsbns?.length) navigate(`/${bookIsbns[0]}`)
   }
 
   return (
@@ -88,12 +88,13 @@ const SearchPage: React.FC = () => {
       {viewState.state === ComponentState.DEFAULT && (
         <div className={styles.booksGrid}>
           {books.map((book) => (
-            <div key={book.key} className={styles.bookCard}>
-              <div
-                className={styles.bookCover}
-                onMouseEnter={() => debouncedMouseOver(book)}
-                onMouseLeave={() => debouncedMouseOver(null)}
-              >
+            <div
+              key={book.key}
+              className={styles.bookCard}
+              onMouseEnter={() => debouncedMouseOver(book)}
+              onMouseLeave={() => debouncedMouseOver(null)}
+            >
+              <div className={styles.bookCover}>
                 <img
                   src={
                     book.cover_i
@@ -104,6 +105,7 @@ const SearchPage: React.FC = () => {
                 />
               </div>
               <a
+                title="Go to the details page"
                 className={styles.bookTitle}
                 onClick={() => handleBookClick(book.isbn)}
               >
