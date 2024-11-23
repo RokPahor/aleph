@@ -88,13 +88,12 @@ const SearchPage: React.FC = () => {
       {viewState.state === ComponentState.DEFAULT && (
         <div className={styles.booksGrid}>
           {books.map((book) => (
-            <div
-              key={book.key}
-              className={styles.bookCard}
-              onMouseEnter={() => debouncedMouseOver(book)}
-              onMouseLeave={() => debouncedMouseOver(null)}
-            >
-              <div className={styles.bookCover}>
+            <div key={book.key} className={styles.bookCard}>
+              <div
+                className={styles.bookCover}
+                onMouseEnter={() => debouncedMouseOver(book)}
+                onMouseLeave={() => debouncedMouseOver(null)}
+              >
                 <img
                   src={
                     book.cover_i
